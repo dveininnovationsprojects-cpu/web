@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Bakes & Cakes - Fresh Homemade Cakes Delivered in Bangalore</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee5b2b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221510",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    // Custom Animation Keyframes 
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.95 },
+                        },
+                        'cart-pop': {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.2)' },
+                        },
+                        'search-shake': {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '25%': { transform: 'translateX(-2px)' },
+                            '75%': { transform: 'translateX(2px)' },
+                        },
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(5%)' },
+                        },
+                        // NEW: Snowfall Keyframes
+                        'snowfall': {
+                            '0%': { transform: 'translateY(-100%) translateX(0)', opacity: '0.8' },
+                            '100%': { transform: 'translateY(100vh) translateX(10vw)', opacity: '0.6' },
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'cart-pop': 'cart-pop 0.3s ease-in-out',
+                        'search-shake': 'search-shake 0.15s ease-in-out',
+                        'bounce-slow': 'bounce-slow 2s ease-in-out infinite',
+                        'snow-1': 'snowfall 12s linear infinite',
+                        'snow-2': 'snowfall 18s linear infinite',
+                        'snow-3': 'snowfall 25s linear infinite',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Styles for navigation link hover animation */
+        .nav-link-animated {
+            position: relative;
+            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .nav-link-animated::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: theme('colors.primary');
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .nav-link-animated:hover {
+            transform: translateY(-1px);
+            color: theme('colors.primary');
+        }
+
+        .nav-link-animated:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Preloader Specific Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f8f6f6; /* light background-light */
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out, visibility 0s 0.5s;
+            /* NEW: Ensure preloader is a stacking context for snow */
+            overflow: hidden; 
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* Styling for the cake image in preloader */
+        #preloader img {
+            max-width: 200px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 12px; /* Slightly rounded corners for the image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            z-index: 10001; /* Keep cake above the snow */
+        }
+        
+        /* NEW: Snowflake styling */
+        .snowflake {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            pointer-events: none;
+            color: white; /* Fallback for emoji snow */
+            opacity: 0.8;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#181311] dark:text-gray-200">
+
+<div id="preloader">
+    <span class="snowflake animate-snow-1" style="width: 15px; height: 15px; top: -5%; left: 10%; animation-duration: 12s; animation-delay: 1s;"></span>
+    <span class="snowflake animate-snow-1" style="width: 10px; height: 10px; top: -10%; left: 50%; animation-duration: 10s; animation-delay: 5s;"></span>
+    <span class="snowflake animate-snow-1" style="width: 12px; height: 12px; top: -15%; left: 80%; animation-duration: 14s; animation-delay: 3s;"></span>
+    
+    <span class="snowflake animate-snow-2" style="width: 8px; height: 8px; top: -20%; left: 30%; animation-duration: 16s; animation-delay: 7s; opacity: 0.7;"></span>
+    <span class="snowflake animate-snow-2" style="width: 6px; height: 6px; top: -25%; left: 65%; animation-duration: 18s; animation-delay: 2s; opacity: 0.7;"></span>
+    <span class="snowflake animate-snow-2" style="width: 9px; height: 9px; top: -30%; left: 5%; animation-duration: 15s; animation-delay: 9s; opacity: 0.7;"></span>
+
+    <span class="snowflake animate-snow-3" style="width: 4px; height: 4px; top: -35%; left: 95%; animation-duration: 22s; animation-delay: 4s; opacity: 0.5;"></span>
+    <span class="snowflake animate-snow-3" style="width: 5px; height: 5px; top: -40%; left: 20%; animation-duration: 25s; animation-delay: 6s; opacity: 0.5;"></span>
+    <span class="snowflake animate-snow-3" style="width: 7px; height: 7px; top: -45%; left: 45%; animation-duration: 20s; animation-delay: 0s; opacity: 0.5;"></span>
+
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuN2JToJ9ue-cmvE7MYl6VMJr6HMQyHfqYWrMaasDqI_UmtgOLYCvT6ZXxBJjoP-z7B__lT4J-bse9hzjS0g6IHrufw0hfXH5EdgHM3dDpRO8p2S1_m2ltPZPo3HUH1_I3uCbYzlyM3DWWSQVMOHvTvRO9sITtIu1FuOla8965ZzSzqjrIAX7hJxn1C0umbt0MqH5MJykVpXqcvP_aPWUSCIdkuJmQHcsIj3s5nKC5gUJ_4StnDHFQhJ8uYOCtKH96itOd25-71Eto" alt="Delicious Red Velvet Cake loading" class="animate-pulse-slow"/>
+    <p class="text-xl font-bold text-primary mt-4 z-10001">Loading your sweet treats...</p>
+</div>
+
+<div id="main-content" class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="bg-primary/10 dark:bg-primary/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-10 text-sm">
+            <p class="text-[#896b61] dark:text-gray-300 font-normal">Welcome to Bakes & Cakes | Bangalore Delivery Available</p>
+            <div class="flex items-center space-x-6">
+                <span class="text-[#896b61] dark:text-gray-300 font-normal hidden md:block">Phone: +91 9876543210</span>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a class="flex items-center gap-2 text-[#181311] dark:text-gray-100" href="#">
+                <svg class="h-8 w-8 text-primary" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+                    <path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+                <h2 class="text-xl font-bold tracking-tight display">Bakes & Cakes</h2>
+            </a>
+            <nav class="hidden lg:flex flex-1 items-center justify-center gap-9">
+                <a class="nav-link-animated text-[#181311] dark:text-gray-200 text-sm font-medium" href="product.html">Product</a>
+                <a class="nav-link-animated text-[#181311] dark:text-gray-200 text-sm font-medium" href="menu.html">Menu</a>
+                <a class="nav-link-animated text-[#181311] dark:text-gray-200 text-sm font-medium" href="categories.html">Categories</a>
+                <a class="nav-link-animated text-[#181311] dark:text-gray-200 text-sm font-medium" href="contact.html">Contact</a>
+            </nav>
+            <div class="flex flex-1 justify-end items-center gap-4">
+                <label class="hidden md:flex flex-col min-w-40 !h-11 max-w-64">
+                    <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                        <div id="search-icon-container" class="text-[#896b61] dark:text-gray-400 flex bg-gray-100 dark:bg-gray-800 items-center justify-center pl-3 rounded-l-lg">
+                            <span class="material-symbols-outlined text-xl">search</span>
+                        </div>
+                        <input id="search-input" 
+                               class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181311] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-gray-100 dark:bg-gray-800 h-full placeholder:text-[#896b61] dark:placeholder:text-gray-500 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal" 
+                               placeholder="Search for cakes..." 
+                               oninput="liveSearchFilter(); animateSearchIcon();"
+                               value=""/>
+                    </div>
+                </label>
+                <button id="cart-button" class="relative flex cursor-pointer items-center justify-center rounded-lg h-11 bg-transparent text-[#181311] dark:text-gray-200 min-w-0 px-2.5 hover:bg-gray-100 dark:hover:bg-gray-800" **onclick="viewCart()"**>
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-primary rounded-full">
+                        0
+                    </span>
+                </button>
+                <a class="flex items-center gap-1 text-[#181311] dark:text-gray-200 font-medium hover:text-primary min-w-0 h-11 px-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="login.html">
+                    <span class="material-symbols-outlined text-2xl">person</span>
+                    <span class="hidden sm:block">Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="flex-grow">
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-8 text-center" data-alt="A beautifully decorated homemade cake on a rustic wooden table." style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCrLk8Orpt7PVHDBY4hTCqxAzJgDsI1z3quyixykympMoy60_iuxSo-yfgFaD9dN9dzVi5NafUZdc4SY4v_WGBeAxos2PhrXlerFd5Iu5YLDW9WF20Y3r8FsMW5QsVcEPaqeBlDevc2T8u9tQ1qIEqgU_M8KTSrFsVkRb3l8ynwQ2MFios09m66HboHjQpJPQRUKwuaU6sGDbYv2Pv7D5UfqjPEsx5ixDZVay3VXZz5xJbW5TRVGdLm1_QLhIRwPPt3Wu3Jl5KyeoRy");'>
+<div class="flex flex-col gap-4 max-w-3xl">
+<h1 class="text-white text-4xl font-black leading-tight tracking-tighter md:text-5xl">Welcome to Bakes & Cakes – Fresh Homemade Cakes Delivered in Bangalore</h1>
+<h2 class="text-white/90 text-base font-normal leading-normal md:text-lg">Indulge in the finest, freshly baked homemade cakes, crafted with love and the best ingredients.</h2>
+</div>
+<a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide transition-all duration-300 ease-in-out hover:bg-opacity-90 hover:-translate-y-0.5 hover:shadow-lg animate-pulse-slow" 
+   href="product.html">
+    <span>Shop Now</span>
+</a>
+</div>
+</div>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<h2 class="text-[#181311] dark:text-gray-100 text-3xl font-bold leading-tight tracking-tight text-center mb-8">Shop by Category</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+<div class="group relative overflow-hidden rounded-xl shadow-sm cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.03]">
+<div class="bg-cover bg-center flex flex-col justify-end p-4 aspect-square transition-transform duration-300 group-hover:scale-105" data-alt="A colorful birthday cake with lit candles." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBRoGO4y-EH3jjFScYqxDgF50jHR9AflordRN9ccJGIq-n1-2F9qmGyKGcdl24YY5cvvBuuwKH-9KuiKcIIU76l1irNln8fs5p77wFcmJH31FlSJxGD-t4yLsngeG6tuKaaQ4H9x8JvXVyCefdUVdzc5BkxBMNeJXTveesJ-7_l8Sp3BDXPaJxuQruAarCX7Untu1vh8-uoIPXQGflC6mZ3Rb3JR8UvL0WCKMkeeG1ecyZ9O7CtwTrpXW6pdwk-V2dX3gGMbfQgOHNw");'>
+<p class="text-white text-base font-bold leading-tight">Birthday Cakes</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-sm cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.03]">
+<div class="bg-cover bg-center flex flex-col justify-end p-4 aspect-square transition-transform duration-300 group-hover:scale-105" data-alt="An elegant anniversary cake with floral decorations." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCeJsxvKAFUbOn9NZHokp3n1Zlmjt6RjZ3d08oLP1mVc3VDHpwUIiXb8FP3MOuZiTaR9wQUs3GxzqksTJ2GK-3kmQ1Ob-gMjC0CNKiG4Iw_d1n-60QWOtLwJocxWafedTwVhwwGeuI3JCsUbjhoh02EL-am74r5yIw3WR_ijng3Ym95neMLO3LtChGcdDeOgMGOPRG-VUfqkcYT3Bv_gYZmqOsbujJS_30NvWRITOTul8rDLw5JpBoK6qPfnTGOIXqFkgm95MckJhup");'>
+<p class="text-white text-base font-bold leading-tight">Anniversary Cakes</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-sm cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.03]">
+<div class="bg-cover bg-center flex flex-col justify-end p-4 aspect-square transition-transform duration-300 group-hover:scale-105" data-alt="A fun kids theme cake shaped like a cartoon character." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIvsh8GIh3arZRu8_Wa3DFXCKDi0RdY_k6VNkapc04D9hKI6CYZiisSko3WYESxwxvitrbThDOzoTMUHwd8Jo0XQ9Erp_omTrSWo337Gs4JNQUdmtTo5AQfmUrAbIQ0QZOy_7aBmZuFj3N4e-cWmLM97Fq2oPnxbzxyHQGDhLV66eRQZZWsQU5Kic8QeXTPGtUi8vH-hRu3hl9KA-2W1VeCu8B3Y4gQEFxtXeLdjLdjQpRbBhwoox3r2aIWlIx0PO8beX-Fju4EnB9");'>
+<p class="text-white text-base font-bold leading-tight">Kids Theme Cakes</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-sm cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.03]">
+<div class="bg-cover bg-center flex flex-col justify-end p-4 aspect-square transition-transform duration-300 group-hover:scale-105" data-alt="A luxurious premium cake with gold leaf." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBRlBVZgaV3oGE8IdqOUQwrACTZj81Uc-rMf8rXIs8CnxrFrsVofqq5afa3My-RGCAJmv8cC6Kusa357BA5DBUmtLv6KTbO93-ft7BA8yPkS6QhZ439Ylc4xqXENScAqEUTiECQDilQLMb72-cIhX-aVW90wlLpii_qwKPbe62HFhb5SfzSjhxeq69sMGPUeqXwjOu-qkcXFcP48_w87GOx4-1INwToi2mDV3RfYm4B7K9AOOwFZpv1zttsjmZo4EkwYCh92twrrXoJ");'>
+<p class="text-white text-base font-bold leading-tight">Premium Cakes</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-sm cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.03]">
+<div class="bg-cover bg-center flex flex-col justify-end p-4 aspect-square transition-transform duration-300 group-hover:scale-105" data-alt="A batch of freshly baked chocolate cupcakes with frosting." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDK9pZ_ZoeuGGLeKNG87m3N-4vgywD26RnjK-I8mKhbA7yiceM2Naz-ZmsN0Zp_K-xYwrxfsJDLGdxdq5enfP3BnuiByL3bei7CaKMf5JfdhTCdJDNjiL1XWnUpVaFhi3KdTThZGVUNGTHUVzHQS_F7PPWMIEbxCA9tk9saYhB51pvgzHxT1mRIriGUcijXvNgWpmVrI5gmLGXAoDem8I1xd3fVg_RQbyLdZ1VAZjdS4A-8Tt9xs2O79p9Yg7h8xgaPbSeEfdcqddfV");'>
+<p class="text-white text-base font-bold leading-tight">Cupcakes</p>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl shadow-sm cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.03]">
+<div class="bg-cover bg-center flex flex-col justify-end p-4 aspect-square transition-transform duration-300 group-hover:scale-105" data-alt="A stack of gooey chocolate brownies." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuByrEVfjJ-dhw9Pba6dQO5yipFZlChVQfI5ly6OwbTmFhxdFwIw3_fcnap6vsdg0Pod0-KYECFYImxT7-v7sYuolfxhA2Xjyoo56qQd8nzHRonKmfD0RUM3kz8iEbr2t5J88jpWrm6BEVgPH-2jjErYRWvEQo3-gtKsXRj9y6z7WO54xvgM4o24oRFO5Ww6Bu5pXUBF9OMfs0k5AzwdnsVHNOgcLhSonafHTw7XNUMNSD-CTpRaaVCsWxqX2JSPkw72R7XYdacVO4hb");'>
+<p class="text-white text-base font-bold leading-tight">Brownies</p>
+</div>
+</div>
+</div>
+</section>
+<section id="product-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<h2 class="text-[#181311] dark:text-gray-100 text-3xl font-bold leading-tight tracking-tight text-center mb-8">Our Bestsellers</h2>
+<div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="product-card bg-white dark:bg-gray-800/50 rounded-xl shadow-sm overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+<div class="relative">
+<img class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Delicious Chocolate Truffle Cake slice on a plate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5qIC-Ja_w40cEaDyLXYh1Fv9hyYRF0kv9XjOq4BtHzo3aY4Jh18XPATBAteNbKwQDYq9zPVG-5AVaUALyK4woukwPKjk3OkcXdyoxvkrZQGG-Ad__ohzR_RKJTwAMqSz9tmfop1LIHZTHg3AP5gpWC2L4fqEzxOOXu7GzJk75XOkSloS7J7Pv23HkjtG6tIaaf2ZggJXUMO4jLkqW1oV0YKjtg8rH2xrwJ-gAxIkbEhgC-hGj0UZJautkv5VLJ3IbsResCJg-iJZd"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="product-name text-lg font-bold text-[#181311] dark:text-gray-100">Chocolate Truffle Cake</h3>
+<p class="text-lg font-semibold text-primary mt-2">₹750</p>
+<div class="mt-auto pt-4">
+<button class="w-full flex items-center justify-center rounded-lg h-11 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-primary font-bold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-150 active:scale-[0.98]"
+        onclick="addToCart('prod-001', 'Chocolate Truffle Cake', 750)">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white dark:bg-gray-800/50 rounded-xl shadow-sm overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+<div class="relative">
+<img class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A vibrant Red Velvet Cake with cream cheese frosting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuN2JToJ9ue-cmvE7MYl6VMJr6HMQyHfqYWrMaasDqI_UmtgOLYCvT6ZXxBJjoP-z7B__lT4J-bse9hzjS0g6IHrufw0hfXH5EdgHM3dDpRO8p2S1_m2ltPZPo3HUH1_I3uCbYzlyM3DWWSQVMOHvTvRO9sITtIu1FuOla8965ZzSzqjrIAX7hJxn1C0umbt0MqH5MJykVpXqcvP_aPWUSCIdkuJmQHcsIj3s5nKC5gUJ_4StnDHFQhJ8uYOCtKH96itOd25-71Eto"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="product-name text-lg font-bold text-[#181311] dark:text-gray-100">Red Velvet Delight</h3>
+<p class="text-lg font-semibold text-primary mt-2">₹800</p>
+<div class="mt-auto pt-4">
+<button class="w-full flex items-center justify-center rounded-lg h-11 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-primary font-bold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-150 active:scale-[0.98]"
+        onclick="addToCart('prod-002', 'Red Velvet Delight', 800)">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+<div class="product-card bg-white dark:bg-gray-800/50 rounded-xl shadow-sm overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+<div class="relative">
+<img class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Classic Black Forest Cake decorated with cherries and chocolate shavings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0SmXlnclISUV6gkoyJxpEee4Avs-RlYSL1OuCvKgizck6ahm60PyjL8cPSmv4JaD1VaH4AWnDP7xkqgzlnBhl_Wlb0CWtvN7599x8TukINceDjM0Nc13pDQBHob3xj0kE-ECHwsHzF9QA3oCeUyhApDzQmjxj534n3hUF-Q7HFhrxPLmpNATqwCXhY_oJn4sPg1v2tSQ8ZCb_qXLMDTnV0A8wbKyga6YtMclVtcwDF3vaskgK6EtFpvmLHo7_cC-Fk4rKm9_2XNGx"/>
+</div>
+<div class="p-5 flex flex-col flex-grow">
+<h3 class="product-name text-lg font-bold text-[#181311] dark:text-gray-100">Classic Black Forest</h3>
+<p class="text-lg font-semibold text-primary mt-2">₹700</p>
+<div class="mt-auto pt-4">
+<button class="w-full flex items-center justify-center rounded-lg h-11 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-primary font-bold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-150 active:scale-[0.98]"
+        onclick="addToCart('prod-003', 'Classic Black Forest', 700)">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-100 dark:bg-gray-900/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<a class="flex items-center gap-2 text-[#181311] dark:text-gray-100" href="#">
+<svg class="h-8 w-8 text-primary" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path><path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path></svg>
+<h2 class="text-xl font-bold tracking-tight">Bakes & Cakes</h2>
+</a>
+<p class="mt-4 text-sm text-gray-600 dark:text-gray-400 max-w-sm">Delivering freshly baked, homemade happiness right to your doorstep in Bangalore. Crafted with love and the finest ingredients.</p>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-[#181311] dark:text-gray-200">Quick Links</h3>
+<ul class="mt-4 space-y-2">
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary" href="#">About Us</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary" href="menu.html">Menu</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary" href="#">Offers</a></li>
+<li><a class="text-sm text-gray-600 dark:text-gray-400 hover:text-primary" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-[#181311] dark:text-gray-200">Store Information</h3>
+<ul class="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>Address: Bangalore – Karnataka</li>
+<li>Phone: +91 XXXXX XXXXX</li>
+<li>Email: support@bakesandcakes.com</li>
+</ul>
+</div>
+</div>
+<div class="mt-12 border-t border-gray-300 dark:border-gray-700 pt-8 flex flex-col sm:flex-row items-center justify-between">
+<p class="text-sm text-gray-500 dark:text-gray-400">© 2024 Bakes & Cakes. All Rights Reserved.</p>
+<div class="flex space-x-4 mt-4 sm:mt-0">
+<a class="text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Facebook</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-primary" href="#">Instagram</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+<script>
+    let cartItemCount = 0; // Initialize cart count
+
+    // Function to handle the "Add to Cart" click on product cards
+    function addToCart(productId, productName, productPrice) {
+        // Update the Cart Count
+        cartItemCount++;
+        const cartCountElement = document.getElementById('cart-count');
+        const cartButton = document.getElementById('cart-button');
+
+        if (cartCountElement) {
+            cartCountElement.textContent = cartItemCount;
+        }
+
+        // Trigger Cart Animation
+        if (cartButton) {
+            cartButton.classList.remove('animate-cart-pop');
+            void cartButton.offsetWidth; // Trigger reflow to restart animation
+            cartButton.classList.add('animate-cart-pop');
+        }
+        
+        console.log(`[Product Added] ${productName} (ID: ${productId}, Price: ₹${productPrice}). Total items: ${cartItemCount}`);
+    }
+
+    // UPDATED FUNCTION: Handle the main cart icon click to redirect
+    function viewCart() {
+        const cartButton = document.getElementById('cart-button');
+
+        // Trigger the animation for visual feedback on click
+        if (cartButton) {
+            cartButton.classList.remove('animate-cart-pop');
+            void cartButton.offsetWidth; // Trigger reflow
+            cartButton.classList.add('animate-cart-pop');
+        }
+
+        // Redirect the user to the dedicated cart page
+        window.location.href = 'shopping-cart.html'; 
+    }
+
+    // Function to run search filter
+    function liveSearchFilter() {
+        // 1. Get the search input value and convert to lowercase for case-insensitive search
+        const input = document.getElementById('search-input');
+        const filter = input.value.toLowerCase();
+        
+        // 2. Get all product cards
+        const productList = document.getElementById('product-list');
+        const cards = productList.getElementsByClassName('product-card');
+
+        // 3. Loop through all product cards and hide those that don't match the search term
+        for (let i = 0; i < cards.length; i++) {
+            const productNameElement = cards[i].querySelector('.product-name');
+            const productName = productNameElement ? productNameElement.textContent : '';
+
+            if (productName.toLowerCase().includes(filter)) {
+                cards[i].style.display = ""; 
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+
+    // Function: Animate Search Icon on Input
+    function animateSearchIcon() {
+        const input = document.getElementById('search-input');
+        const iconContainer = document.getElementById('search-icon-container');
+
+        if (input.value.length > 0 && iconContainer) {
+            // Shake only when input is active/non-empty for subtle feedback
+            iconContainer.classList.remove('animate-search-shake');
+            void iconContainer.offsetWidth; // Trigger reflow
+            iconContainer.classList.add('animate-search-shake');
+        }
+    }
+    
+    // FUNCTION: Hide the preloader when the page content is loaded
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        
+        // Wait for 1.5 seconds (1500 milliseconds) for the user to see the animation
+        setTimeout(() => {
+            if (preloader) {
+                // This class triggers the opacity transition (fade out)
+                preloader.classList.add('hidden');
+            }
+        }, 1500); 
+    });
+</script>
+
+</body>
+</html>

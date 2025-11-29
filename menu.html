@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bakes &amp; Cakes - Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0..200" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ee5b2b",
+              "background-light": "#f8f6f6",
+              "background-dark": "#221510",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="mx-auto flex max-w-7xl items-center justify-between whitespace-nowrap border-b border-solid border-neutral-200/80 dark:border-neutral-800/80 px-4 sm:px-6 lg:px-8 py-3">
+<div class="flex items-center gap-4 text-neutral-900 dark:text-neutral-100">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-tight"> Bakes &amp; Cakes</h2>
+</div>
+<div class="flex items-center gap-4">
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+<a class="text-primary font-bold" href="menu.html">Menu</a>
+<a class="hover:text-primary dark:hover:text-primary" href="contact.html">Contact</a>
+</nav>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-neutral-200/50 dark:bg-neutral-800/50 hover:bg-neutral-200/80 dark:hover:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 relative">
+<span class="material-symbols-outlined text-xl">shopping_bag</span>
+<span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-white text-xs font-bold">3</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<div class="px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+<div class="mx-auto flex max-w-7xl flex-col gap-8">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex min-w-72 flex-col gap-2">
+<h1 class="text-neutral-900 dark:text-neutral-100 text-4xl font-black tracking-tighter">Freshly Baked For You</h1>
+<p class="text-neutral-500 dark:text-neutral-400 text-base">Explore our delicious range of homemade cakes, cupcakes, and cookies, all made with love.</p>
+</div>
+</div>
+<div class="flex gap-2 p-1 overflow-x-auto">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4">
+<p class="text-white text-sm font-medium">All</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-neutral-200/60 dark:bg-neutral-800/60 hover:bg-neutral-300/60 dark:hover:bg-neutral-700/60 px-4">
+<p class="text-neutral-900 dark:text-neutral-100 text-sm font-medium">Cakes</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-neutral-200/60 dark:bg-neutral-800/60 hover:bg-neutral-300/60 dark:hover:bg-neutral-700/60 px-4">
+<p class="text-neutral-900 dark:text-neutral-100 text-sm font-medium">Cupcakes</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-neutral-200/60 dark:bg-neutral-800/60 hover:bg-neutral-300/60 dark:hover:bg-neutral-700/60 px-4">
+<p class="text-neutral-900 dark:text-neutral-100 text-sm font-medium">Cookies</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-neutral-200/60 dark:bg-neutral-800/60 hover:bg-neutral-300/60 dark:hover:bg-neutral-700/60 px-4">
+<p class="text-neutral-900 dark:text-neutral-100 text-sm font-medium">Brownies</p>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A delicious looking Belgian chocolate truffle cake on a white plate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBID_dvKY9U8d2RvGq5NPEqpHEaOtv2rRicpXHKtc0mxWLELVxmRbGvV_scExQ22L9y9TabUewJCadAJqrk8dI4zbIUcuyYRQ5J0g3gXdM1ys3NHOULPgqioiiGBoDh_9ObmbWwRfoh-WOH4_tBdw8pz2rwFhiFKD_iY6LCKEX0fgK0zXGbiE35sVKU9kNBCx7NqXzCAxhIuJ1hLP6-BKlgipJLXLHDPa5-WyPhr5YOaLX9u-9rabA91FA7IvbyYFF8r-7mS_2DHtUL");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Belgian Chocolate Truffle Cake</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹1200</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A slice of red velvet cake with white cream cheese frosting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBL_3azlJmGKawSu68fasOzj_V37_5DNu04ARZXSYB3FzKFPboW1hDnqJar444CUxAzg1wiqagim3hWcrOZIjAr1twAbxE4UBYA1I_53I0VOO5JJUR0gzHryUOHXEy9zKx6WeCtRQtAOUxluU-9XWGzjgzU8KIkJYDBwoXEwBiZDo-IK3cg59UorxFBmK4lJZZYhscXyqr0K_KTadIrJzswxcUIZjHRFuthbLeVJVNKmdC56fRcEO5FsRuoDbKL_Xu9u6KapT0v6u2A");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Red Velvet Delight</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹1350</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A classic vanilla bean cupcake with white frosting and sprinkles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5Oou9P4u2KtM8bnJp4Hl7-GpMVkHl12Z0lAQzqkpzwofxjKfuch7jGnUWJGOToG7d_FDpNg6dIrCW2l5TjVeWRH8BxLgZNuVfX2RkIY-8uOz9nQeWnHh_yNg4XdekLFKfDN8Kt4JBzdfyjEqfx-JiNugYuE040wGlUdXNMJqaQE5MdsJ5iwY-F1NIaNAoMWJOau4XObTCuj37FG25uln4DGVnCuWEFW4htDyD9wwbloJDHp2AJvmC5r2hJJBP_GerSRju_tj_LpPE");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Classic Vanilla Bean Cupcake</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹150</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A stack of choco-chip walnut cookies" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJjwK1DktQJm5QvReBJ-r0DgaT-_4n6ygCYfQzjwKV2pCnqtUOgjV4J3sU3RiCQjWfdMFowdq7o15qnXQ1eJaDIJe3i5s7UAICpFyZdzCOEKmreptqEyahV8q6c9AuVuDA3YvDE_sPdy2uPMlxWhkvRjBDd5TCMSGt3aGtUwdfVLt82lAYrtpLDS1XAaKzo_FKnlKd7qZzKucEh8eNjdW1Z9EjbXHTpqI8BFZt04akhLqpoAalCxSoNFYmrqA8eP88xZqVuwfjmQyE");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Choco-Chip Walnut Cookies</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹450 (Box of 6)</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A lemon blueberry loaf cake on a wooden board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyE1RHlKcCB7nRQ2Dx-0Qba9XELNXHuINTl9767ilmGQ81htKe24YSGL14iyrK76hFbMX7n0MFVqN6TvVbZyu_CSAIeurQ-eZcy_ks3iaogJg07B9sXp2vU8rTbbcUnSCvb2ZA3enlTkvV-hC6C7OwNjMi4f1RGVBDkXn6l7-OBMLJx670GvCjb2-EOXfJ0wJXvt3Cekri54Wjyzn_T-Osbn8nLrF_92t-HMN6eTok-5rSI4EDionZM3jcDOj3_5ruXb6UCOdELlWD");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Lemon Blueberry Loaf</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹800</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="Fudgy chocolate brownie square on a plate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsDDJAMlvJfW198BGMn225aaSt4nchdr3ETArmDr25BQ7hg1SmH1kYoCjxtByZOiyYndnyelFsOVuNjQGHe5YiEt7N-TVzAIQq7QtMUwn4y5u5BdLRfTwJVYabehlF9ja_LMdeUqnNO1IejNT5WEpnE9FzRaF5ux4Hbu-114HentizZrmFWheX0PK0daZ92BXepdgOVGYBG-sJKUR_Iz9B7Z1LiUVJsWn4JXlFQbgmqUrVfVKjteqRuiFbQMPHAIJVZJfQn9BIvQHK");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Fudgy Chocolate Brownie</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹200</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A slice of carrot cake with cream cheese frosting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCBIo4ERw5rARb9STegnv1HdT02S3k4TmJUmQXRSePToVCxskBpQwAyZGhimebpfxGVBFoImNxNlgwiYSNbdlgX8N-WZ9IjyozAFyIP9jKdpQIkg2EuhjdLmLrreW6f_p_sBC2H1EoCN6Xrjp6RWc9tBrLNWkp8Juvv0VzKUG7jJVT9Rjd59GfJnBpvuKZwj0wtTuRXfx9VyNWN8LSbG22sVLA2_gzggaM7_K422XRz2ajMRfKkXUDmCuQMstX1uho3EMq5YKLtTSR1");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Carrot Cake with Cream Cheese</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹1100</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-4 group">
+<div class="w-full bg-center bg-no-repeat aspect-[3/4] bg-cover rounded-xl overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:scale-105" data-alt="A beautiful strawberry shortcake with fresh strawberries on top" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDgqaM7P7AVIaQwjnq4lGL3vnNo-9xL428v7d_SHEsWi-uMkJvGvqeE8jgsy7IG_flfKNwRyv1l7l-guVLvtb9gfx8pCbnR4sOWI8paCmQVXq2WniT_MqQVBTupaCnTK3lLrmZDQK838mb6abyTNn4mY9qaqvZdZpO7pgp0GuMxqgLJTPXqpHGE4crJlyavJ_YjiLJ5AJqyWamQ-sbEUvKyTDLzWS0bUClZDiwgOy36M3TtEJICT6m5G6n4c_yBK8mLtByn1ubji87");'></div>
+<div class="flex flex-col gap-2">
+<h3 class="text-neutral-900 dark:text-neutral-100 text-lg font-bold">Strawberry Shortcake</h3>
+<p class="text-neutral-600 dark:text-neutral-400 text-base font-medium">₹1400</p>
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg bg-primary/20 dark:bg-primary/20 text-primary py-2.5 text-sm font-bold hover:bg-primary/30 dark:hover:bg-primary/30 transition-colors">
+<span class="material-symbols-outlined text-base">add_shopping_cart</span>
+                                        Add to Cart
+                                    </button>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center p-4">
+<a class="flex h-10 w-10 items-center justify-center text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">chevron_left</span>
+</a>
+<a class="text-sm font-bold flex h-10 w-10 items-center justify-center text-white rounded-full bg-primary" href="#">1</a>
+<a class="text-sm font-medium flex h-10 w-10 items-center justify-center text-neutral-600 dark:text-neutral-400 rounded-full hover:bg-primary/20 dark:hover:bg-primary/20" href="#">2</a>
+<a class="text-sm font-medium flex h-10 w-10 items-center justify-center text-neutral-600 dark:text-neutral-400 rounded-full hover:bg-primary/20 dark:hover:bg-primary/20" href="#">3</a>
+<span class="text-sm font-medium flex h-10 w-10 items-center justify-center text-neutral-600 dark:text-neutral-400 rounded-full">...</span>
+<a class="flex h-10 w-10 items-center justify-center text-neutral-500 dark:text-neutral-400 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-neutral-100 dark:bg-neutral-900">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold text-neutral-900 dark:text-neutral-100">Bakes &amp; Cakes</h2>
+</div>
+<p class="text-neutral-600 dark:text-neutral-400 text-sm">Homemade with love, delivered to your door in Bangalore.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="font-bold text-neutral-900 dark:text-neutral-100">Quick Links</h3>
+<a class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary" href="index.html">Home</a>
+<a class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary" href="menu.html">Menu</a>
+<a class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary" href="contact.html">About Us</a>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="font-bold text-neutral-900 dark:text-neutral-100">Information</h3>
+<a class="text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary" href="contact.html">Contact</a>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="font-bold text-neutral-900 dark:text-neutral-100">Follow Us</h3>
+<div class="flex gap-4">
+<!-- Social links here -->
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm text-neutral-500 dark:text-neutral-400">
+<p>© 2024  Bakes &amp; Cakes. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>
